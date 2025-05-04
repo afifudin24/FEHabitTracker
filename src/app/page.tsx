@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid  grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <ThemeToggle />
         <Image
@@ -14,16 +14,16 @@ export default function Home() {
           height={38}
           priority
         />
-        <p className="text-red-500 dark:text-blue-500">Ondol</p>
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
+        <p className="text-text-primary  bg-primary-blue">Ondol</p>
+        <ol className="list-inside bg-bg-card list-decimal  text-sm/6 text-center sm:text-left">
+          <li className="mb-2 tracking-[-.01em] font-secondary">
             Get started by editing{" "}
-            <code className=" px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+            <code className=" px-1 py-0.5 rounded  font-semibold">
               src/app/page.tsx
             </code>
             .
           </li>
-          <li className="tracking-[-.01em]">
+          <li className="font-primary tracking-[-.01em]">
             Save and see your changes instantly.
           </li>
         </ol>

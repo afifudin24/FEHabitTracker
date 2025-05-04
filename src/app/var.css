@@ -1,0 +1,51 @@
+:root {
+    /* 🎨 Font */
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Poppins', sans-serif;
+    --font-default: 'Roboto', sans-serif;
+  
+    /* 🎨 Warna Utama */
+    --color-primary-blue: #4A90E2;
+    --color-primary-green: #27AE60;
+
+    /* warna secondary */
+    --color-primary-hover: #1b924d;
+    --color-secondary-blue: #2D9CDB;
+    --color-secondary-gray: #7F8C8D;
+
+  
+    /* 🎨 Background */
+    --color-bg-light: #ffffff;
+    --color-bg-soft: #f7f7f7;
+    --color-bg-card: #f0f0f0;
+  
+    /* 🎨 Teks */
+    --color-text-dark: #333333;
+    --color-text-muted: #777777;
+    --color-text-light: #ffffff;
+  
+    /* 🎨 Aksen (tag warna custom) */
+    
+    --color-tag-habit-1: #F2994A; /* orange */
+    --color-tag-habit-2: #9B51E0; /* purple */
+    --color-tag-habit-3: #56CCF2; /* light blue */
+    --color-tag-habit-4: #EB5757; /* red */
+  
+    /* 🎨 Border & Shadow */
+    --color-border: #e0e0e0;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  body.dark {
+    --color-bg-light: #464242;
+    --color-bg-soft: #3f3f3f;
+    --color-bg-card: #333333;
+    --color-primary-green: 		#00BFFF;
+    --color-primary-hover: #0587b3;
+    --color-text-dark: #FFFFFF;
+    --color-text-muted: #AAAAAA;
+    --color-border: #444444;
+    --shadow-card: 0 2px 8px rgba(255, 255, 255, 0.05);
+  }
+
+  
