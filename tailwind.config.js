@@ -44,7 +44,4 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('tailwindcss-pseudo-elements'),
-  ],
 };

@@ -38,11 +38,11 @@ const NavbarDashboard = () => {
 
   return (
     <div className={`w-full  transition-all duration-300`}>
-     
-        {/* Desktop Navigation */}
-        <nav className={`hidden md:block w-full top-0 z-50 py-4 ${isSticky ? 'fixed bg-bg-card shadow-md' : 'shadow-sm relative'}`}>
-           <Container className="flex justify-between items-center ">
-          <div className="text-2xl hover:text-primary-hover transition-all ease-in-out duration-300 font-bold text-primary">
+
+      {/* Desktop Navigation */}
+      <nav className={`hidden md:block w-full top-0 z-50 py-4 ${isSticky ? 'fixed bg-bg-card shadow-md' : 'shadow-sm relative'}`}>
+        <Container className="flex justify-between items-center ">
+          <div className="text-3xl hover:text-primary-hover transition-all ease-in-out duration-300 font-bold text-primary">
             <a href="">BiasaKeun</a>
           </div>
 
@@ -73,36 +73,36 @@ const NavbarDashboard = () => {
               </div>
             </div>
           </div>
-            </Container>
-        </nav>
-
-          {/* Mobile Navigation */}
-      <nav className={`md:hidden block py-4 w-full top-0 z-50  ${isSticky ? 'fixed bg-bg-card shadow-md' : 'shadow-sm fixed'}`}>
-        <Container className="flex items-center justify-between">
-     
-        <div className="text-2xl font-bold text-primary hover:text-primary-hover"><a href="">BiasaKeun</a></div>
-        <div onClick={toggleSidebar} className={`text-2xl  text-text-light   w-[50px] h-[50px] hover:bg-primary-hover flex items-center justify-center rounded-md  cursor-pointer ${showSidebar ? 'bg-primary-hover' : 'bg-primary'}`}>
-          {/* <i className="fa fa-bars"></i> */}
-          
-
-          {
-            showSidebar ? (
-              <FontAwesomeIcon icon={faTimes}  />
-            ) : (
-            <FontAwesomeIcon icon={faBars}  />
-            )
-          }
-        </div>
-          </Container>
+        </Container>
       </nav>
 
-        {/* Sidebar */}
-        <div className={`fixed top-0 left-0 h-full bg-bg-card z-50 transition-all duration-500 ease-in-out overflow-x-hidden ${showSidebar ? "w-[60%]" : "w-0"}`}>
+      {/* Mobile Navigation */}
+      <nav className={`md:hidden block py-4 w-full top-0 z-50  ${isSticky ? 'fixed bg-bg-card shadow-md' : 'shadow-sm fixed'}`}>
+        <Container className="flex items-center justify-between">
+
+          <div className="text-2xl font-bold text-primary hover:text-primary-hover"><a href="">BiasaKeun</a></div>
+          <div onClick={toggleSidebar} className={`text-2xl  text-text-light   w-[50px] h-[50px] hover:bg-primary-hover flex items-center justify-center rounded-md  cursor-pointer ${showSidebar ? 'bg-primary-hover' : 'bg-primary'}`}>
+            {/* <i className="fa fa-bars"></i> */}
+
+
+            {
+              showSidebar ? (
+                <FontAwesomeIcon icon={faTimes} />
+              ) : (
+                <FontAwesomeIcon icon={faBars} />
+              )
+            }
+          </div>
+        </Container>
+      </nav>
+
+      {/* Sidebar */}
+      <div className={`fixed top-0 left-0 h-full bg-bg-card z-50 transition-all duration-500 ease-in-out overflow-x-hidden ${showSidebar ? "w-[60%]" : "w-0"}`}>
         <div className="h-full py-12 px-4 flex flex-col justify-between items-center">
           {/* Menu */}
           <div className="w-full">
             <ul className="flex flex-col items-center gap-5 text-[16px] font-medium text-text-primary">
-            {links.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -131,14 +131,14 @@ const NavbarDashboard = () => {
           </div>
         </div>
       </div>
-    
 
-      
-        
 
-    
 
-      
+
+
+
+
+
     </div>
   );
 };

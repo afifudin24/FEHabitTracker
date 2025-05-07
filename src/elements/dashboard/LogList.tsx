@@ -17,24 +17,23 @@ const LogList: React.FC = () => {
 
   return (
     <div className="my-4 flex flex-wrap gap-4 justify-between">
-      {logs.map((log) => (
-        <div
+      {logs.map((log, index) => (
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay={`${index * 200}`}
           key={log.id}
           className="w-full sm:w-[48%] lg:w-[30%] p-4 bg-bg-card rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-4"
         >
           <div
-            className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xl ${
-              log.checked ? 'bg-primary' : 'bg-red-700'
-            }`}
+            className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xl ${log.checked ? 'bg-primary' : 'bg-red-700'
+              }`}
           >
             {
-                log.checked ? (
-                    <FontAwesomeIcon icon={faCheck} />
-                ) : (
-                    <FontAwesomeIcon icon={faTimes} />
-                )
+              log.checked ? (
+                <FontAwesomeIcon icon={faCheck} />
+              ) : (
+                <FontAwesomeIcon icon={faTimes} />
+              )
             }
-          
+
           </div>
           <div className="text-left">
             <p className="font-medium text-sm text-text-primary">{log.text}</p>

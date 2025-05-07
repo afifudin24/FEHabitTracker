@@ -1,3 +1,5 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import { useState, useEffect } from "react";
 import Container from "@/components/Container";
@@ -30,45 +32,45 @@ const Section1 = () => {
     return () => clearInterval(interval);
   }, []);
 
-    return (
-        <div>
-        <Container>
-          <div className="flex flex-col md:flex-row  my-5  gap-5 py-5 justify-between items-center">
+  return (
+    <div>
+      <Container>
+        <div className="flex flex-col md:flex-row  my-5  gap-5 py-5 justify-between items-center">
 
-            <div className="left md:text-start text-center" data-aos="fade-right" data-aos-duration="1000">
-              <div className="title">
+          <div className="left md:text-start text-center" data-aos="fade-right" data-aos-duration="1000">
+            <div className="title">
               <h1
-      className={`h1Text mb-5 font-bold text-[2rem] transition-opacity duration-400 ${
-        fade ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      {h1Text[textIndex]}
-    </h1>
-                <p className="mb-5">Build better habits, one day at a time. Track your progress and stay motivated on your journey to self-improvement.</p>
-                <ButtonHref href="/dashboard" children="Start Tracking"/>
-              </div>
+                className={`h1Text mb-5 font-bold text-[2rem] transition-opacity duration-400 ${fade ? "opacity-100" : "opacity-0"
+                  }`}
+              >
+                {h1Text[textIndex]}
+              </h1>
+              <p className="mb-5">Build better habits, one day at a time. Track your progress and stay motivated on your journey to self-improvement.</p>
+
+              <ButtonHref href="/dashboard" children="Start Tracking" />
             </div>
-            <div className="right my-3 md:my-0" data-aos="fade-left" data-aos-duration="1000">
-              <Image
-                src={bodyDarkImage}
-                alt="Dark Image"
-                className="hidden w-[100%] object-cover dark:block"
-                
-              />
-              <Image
-                src={bodyLightImage}
-                alt="Light Image"
-                className="dark:hidden w-[100%] object-cover"
-                
-              />
-            </div>
-
-
-
           </div>
-        </Container>
-      </div>
-    );
+          <div className="right my-3 md:my-0" data-aos="fade-left" data-aos-duration="1000">
+            <Image
+              src={bodyDarkImage}
+              alt="Dark Image"
+              className="hidden w-[100%] object-cover dark:block"
+
+            />
+            <Image
+              src={bodyLightImage}
+              alt="Light Image"
+              className="dark:hidden w-[100%] object-cover"
+
+            />
+          </div>
+
+
+
+        </div>
+      </Container>
+    </div>
+  );
 }
 
 export default Section1;
