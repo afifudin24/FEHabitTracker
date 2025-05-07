@@ -85,7 +85,7 @@ html.dark {
   bottom: 0;
   height: 2px;
   width: 0;
-  background-color: var(--color-primary-green);
+  background-color: var(--color-primary);
   transition: width 0.3s ease;
 }
 
@@ -96,3 +96,104 @@ html.dark {
 .link.active::after {
   width: 100%;
 }
+
+
+/* Habit List */
+  /* checkbox */
+ /* Kustomisasi checkbox */
+ .custom-checkbox {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+}
+
+/* Sembunyikan checkbox asli */
+.habit-list input[type="checkbox"] {
+  display: none;
+}
+
+/* Kotak checkbox kustom */
+.custom-checkbox::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+/* Tanda cek */
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Saat dicentang: ubah warna dan tampilkan tanda cek */
+.habit-list input[type="checkbox"]:checked + .custom-checkbox::before {
+  background-color: var(--color-primary);
+  /* background-color: red; */
+}
+
+.habit-list input[type="checkbox"]:checked + .custom-checkbox::after {
+  display: block;
+}
+
+
+/* progress bar */
+.progress-summary {
+  background-color: var(--color-bg-card);
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  width: 100%;
+  text-align: left;
+}
+
+.progress-summary h3 {
+  margin-bottom: 16px;
+  color: var(--color-primary-green);
+  font-size: 24px;
+}
+
+.progress-summary p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: var(--color-text-dark);
+}
+
+.progress-bar-container {
+  background-color: #ddd;
+  border-radius: 10px;
+  height: 16px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: var(--color-primary); /* green */
+  height: 100%;
+  /* width: 0; */
+  transition: width 0.4s ease;
+}
+
+.progress-percent {
+  margin-top: 6px;
+  font-size: 14px;
+  text-align: right;
+  color: var(--color-text-dark);
+}
+

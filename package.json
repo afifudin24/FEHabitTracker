@@ -17,9 +17,11 @@
     "firebase": "^11.6.0",
     "js-cookie": "^3.0.5",
     "next": "15.3.1",
+    "nextjs-progressbar": "^0.0.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss-pseudo-elements": "^2.0.0"
+    "tailwindcss-pseudo-elements": "^2.0.0",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
