@@ -9,9 +9,7 @@ import Footer from "@/components/Footer";
 import Section4 from "@/elements/dashboard/Section4";
 const Dashboard = () => {
     return (
-        <div className="flex min-h-[100vh] justify-between flex-col">
-
-        
+        <div className="flex min-h-[100vh] justify-between flex-col">        
         <div >
         <DarkModeToggle />
             < NavbarDashboard />

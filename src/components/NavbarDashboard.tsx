@@ -27,7 +27,7 @@ const NavbarDashboard = () => {
   useEffect(() => {
     const handleScroll = () => {
       console.log(window.scrollY);
-      setIsSticky(window.scrollY > 10);
+      setIsSticky(window.scrollY > 5);
     };
 
     window.addEventListener("scroll", handleScroll);
