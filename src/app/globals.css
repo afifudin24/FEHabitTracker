@@ -19,6 +19,7 @@
   --color-bg-card: #f0f0f0;
 
   --color-text-primary: #333333;
+  --color-text-secondary : #444444;
   --color-text-muted: #777777;
   --color-text-light: #ffffff;
 
@@ -60,6 +61,7 @@ html.dark {
     --color-primary: #00BFFF;
     --color-bg-soft: #1e1e1e;
     --color-text-primary: #f0f0f0;
+    --color-text-secondary : #ffffff;
       --color-bg-card: #333333;
        --color-primary-hover: #0587b3;
        --color-bg-light: #464242;

@@ -11,7 +11,9 @@ interface FormInputProps {
 
 const FormInput: React.FC<FormInputProps> = ({ name, required, placeholder, onChange, type = "text", value = "" }) => {
   return (
+   
     <input
+   
       name={name}
       type={type}
       required={required}

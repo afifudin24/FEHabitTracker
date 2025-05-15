@@ -20,7 +20,10 @@
     "next": "15.3.1",
     "nextjs-progressbar": "^0.0.16",
     "react": "^19.0.0",
+    "react-color": "^2.19.3",
+    "react-colorful": "^5.6.1",
     "react-dom": "^19.0.0",
+    "react-toastify": "^11.0.5",
     "tailwindcss-pseudo-elements": "^2.0.0",
     "typed.js": "^2.1.0"
   },
