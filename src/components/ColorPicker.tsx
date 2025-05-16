@@ -20,7 +20,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ name, value, onChange }) => {
   return (
     <div className="flex flex-col gap-2">
       <HexColorPicker color={value} onChange={handleColorChange} />
-      
+
       <input
         type="text"
         value={value}
@@ -29,7 +29,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ name, value, onChange }) => {
         className="border rounded p-1"
         placeholder="#000000"
       />
-      
+
       {/* <div className="text-sm mt-1">Selected: {value}</div> */}
     </div>
   );

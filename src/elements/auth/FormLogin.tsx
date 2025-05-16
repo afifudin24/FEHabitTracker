@@ -1,30 +1,75 @@
 import FormInput from "@/components/FormInput";
+import { login } from "@/services/authServices";
 import { useState } from "react";
+import Cookies from "js-cookie";
 const FormLogin = () => {
-    const [user, setUser] = useState({
-        email: '',
-        password: ''
-    });
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setUser(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-    return (
-        <><form className="text-text-primary">
-            {/* <input type="text" placeholder="Username" required />
-             */}
-            <FormInput onChange={handleChange} name="email" required={true} value={user.email} type="text" placeholder="Email" />
-            <FormInput name="password" onChange={handleChange} type="password" required={true} value={user.password} placeholder="Password" />
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-            {/* <button type="submit">Login</button> */}
-            <a className="login w-full block text-center  p-3 bg-primary text-text-light border-none rounded-lg text-base cursor-pointer transition-all duration-100 ease-in-out hover:bg-primary-hover" href="/dashboard">Login</a>
-        </form><div className="signup-link text-center mt-3.5 text-primary">
-                Not have account? <a href="/register" className="decoration-none hover:underline">Signup</a>
-            </div></>
-    )
-}
+  const handleSubmit = async () => {
+    try {
+      const response = await login(user);
+      console.log(response);
+      if (response.status == 200) {
+        Cookies.set("token", response.data.token, { expires: 1 });
+      }
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+  return (
+    <>
+      <form className="text-text-primary">
+        {/* <input type="text" placeholder="Username" required />
+         */}
+        <FormInput
+          onChange={handleChange}
+          name="email"
+          required={true}
+          value={user.email}
+          type="text"
+          placeholder="Email"
+        />
+        <FormInput
+          name="password"
+          onChange={handleChange}
+          type="password"
+          required={true}
+          value={user.password}
+          placeholder="Password"
+        />
+
+        <button
+          className="login w-full block text-center  p-3 bg-primary text-text-light border-none rounded-lg text-base cursor-pointer transition-all duration-100 ease-in-out hover:bg-primary-hover"
+          type="button"
+          onClick={handleSubmit}
+        >
+          Login
+        </button>
+        {/* <a
+          className="login w-full block text-center  p-3 bg-primary text-text-light border-none rounded-lg text-base cursor-pointer transition-all duration-100 ease-in-out hover:bg-primary-hover"
+          href="/dashboard"
+        >
+          Login
+        </a> */}
+      </form>
+      <div className="signup-link text-center mt-3.5 text-primary">
+        Not have account?{" "}
+        <a href="/register" className="decoration-none hover:underline">
+          Signup
+        </a>
+      </div>
+    </>
+  );
+};
 
 export default FormLogin;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface FormSelectProps {
   name: string;
@@ -34,10 +34,14 @@ const FormSelect: React.FC<FormSelectProps> = ({
         className="w-full p-3 border border-gray-300 rounded-lg text-[15px] focus:outline-none focus:ring-2 focus:ring-primary"
       >
         <option value="" disabled>
-          Select {label}
+          {label}
         </option>
         {options.map((option) => (
-          <option className='text-text-primary bg-bg-soft' key={option.value} value={option.value}>
+          <option
+            className="text-text-primary bg-bg-soft"
+            key={option.value}
+            value={option.value}
+          >
             {option.label}
           </option>
         ))}

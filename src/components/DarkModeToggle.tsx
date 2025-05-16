@@ -32,7 +32,7 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="fixed bottom-5 cursor-pointer right-5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white w-[50px] h-[50px] rounded-full shadow-lg flex items-center justify-center text-xl transition"
+      className="fixed bottom-5 z-50 cursor-pointer right-5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white w-[50px] h-[50px] rounded-full shadow-lg flex items-center justify-center text-xl transition"
     >
       <FontAwesomeIcon icon={isDark ? faSun : faMoon} />
     </button>

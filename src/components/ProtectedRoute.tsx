@@ -1,27 +1,35 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { redirect } from 'next/navigation'; // Untuk redirect
 import { checkAuth } from "@/lib/checkAuth";
-import { getMe } from "@/services/userServices";
-
+import PageLoader from "./Pageloader";
 type ProtectedRouteProps = {
   children: ReactNode;
 };
 
-const ProtectedRoute = async ({ children }: ProtectedRouteProps) => {
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
-  const authResult = await checkAuth();
+  useEffect(() => {
+    const authenticate = async () => {
+      const authResult = await checkAuth(setLoading);
+      if (!authResult) {
+        router.push("/login");
+      } else {
+        setIsAuthenticated(true);
+      }
+      setLoading(false); // Pastikan set loading false di akhir
+    };
 
-  if (!authResult || !authResult.user) {
-    // redirect('/login'); // Redirect jika user tidak terautentikasi
-    router.push('/login');
-  }
+    authenticate();
+  }, []);
 
-  if (loading) return <p>Checking authentication...</p>;
+  if (loading) return <PageLoader />;
+
+  if (!isAuthenticated) return null;
 
   return <>{children}</>;
 };
