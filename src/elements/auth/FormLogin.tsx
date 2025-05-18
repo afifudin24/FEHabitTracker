@@ -2,6 +2,7 @@ import FormInput from "@/components/FormInput";
 import { login } from "@/services/authServices";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { showToast } from "@/components/Toastify";
 const FormLogin = () => {
   const [user, setUser] = useState({
     email: "",
@@ -19,11 +20,31 @@ const FormLogin = () => {
     try {
       const response = await login(user);
       console.log(response);
+      showToast(response.data.message, response.data.status);
       if (response.status == 200) {
         Cookies.set("token", response.data.token, { expires: 1 });
+        window.location.href = "/dashboard";
       }
     } catch (err: any) {
-      console.log(err);
+      // console.log(err);
+      console.log(err.response);
+      // console.log(err.data.errors[0]);
+      const errors = err.response?.data?.errors;
+
+      if (Array.isArray(errors)) {
+        if (errors.length > 1) {
+          const jsxList = (
+            <ul style={{ paddingLeft: "20px", margin: 0 }}>
+              {errors.map((msg: string, idx: number) => (
+                <li key={idx}>{msg}</li>
+              ))}
+            </ul>
+          );
+          showToast(jsxList, "error");
+        } else {
+          showToast(errors[0], "error");
+        }
+      }
     }
   };
   return (

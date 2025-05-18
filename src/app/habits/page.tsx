@@ -159,7 +159,7 @@ const Habits = () => {
           showToast(errors[0], "error");
         }
       } else {
-        showToast("Terjadi kesalahan", "error");
+        showToast("Failed to save data", "error");
       }
     }
   };

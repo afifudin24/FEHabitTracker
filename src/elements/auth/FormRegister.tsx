@@ -1,6 +1,7 @@
 import FormInput from "@/components/FormInput";
 import { useState, useRef } from "react";
 import { showToast } from "@/components/Toastify";
+import { register } from "@/services/authServices";
 
 const FormRegister = () => {
   const [user, setUser] = useState({
@@ -8,11 +9,22 @@ const FormRegister = () => {
     name: "",
     password: "",
     confirmPassword: "",
+    profile: null,
   });
 
   // Buat ref untuk email input
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+
+  const resetForm = () => {
+    setUser({
+      email: "",
+      name: "",
+      password: "",
+      confirmPassword: "",
+      profile: null,
+    });
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,7 +39,7 @@ const FormRegister = () => {
     return pattern.test(email);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!user.email || !user.name || !user.password || !user.confirmPassword) {
       showToast("Please fill in all required fields.", "error");
       return;
@@ -50,7 +62,32 @@ const FormRegister = () => {
       return;
     }
 
-    showToast("Registration successful!", "success");
+    // showToast("Registration successful!", "success");
+
+    try {
+      const response = await register(user);
+      showToast(response.data.message, response.data.status);
+      resetForm();
+    } catch (err: any) {
+      console.log(err.response);
+      // console.log(err.data.errors[0]);
+      const errors = err.response?.data?.errors;
+
+      if (Array.isArray(errors)) {
+        if (errors.length > 1) {
+          const jsxList = (
+            <ul style={{ paddingLeft: "20px", margin: 0 }}>
+              {errors.map((msg: string, idx: number) => (
+                <li key={idx}>{msg}</li>
+              ))}
+            </ul>
+          );
+          showToast(jsxList, "error");
+        } else {
+          showToast(errors[0], "error");
+        }
+      }
+    }
 
     // Lanjutkan proses registrasi...
   };
