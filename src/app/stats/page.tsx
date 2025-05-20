@@ -3,7 +3,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 import NavbarDashboard from "@/components/NavbarDashboard";
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
-import { H2, H3 } from "@/components/Heading";
+import { H3 } from "@/components/Heading";
 const Stats = () => {
     return (
 

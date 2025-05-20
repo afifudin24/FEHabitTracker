@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import FormInput from "@/components/FormInput";
 import { login } from "@/services/authServices";
 import { useState } from "react";

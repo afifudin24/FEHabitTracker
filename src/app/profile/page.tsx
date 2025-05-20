@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // app/profile/page.tsx
 import ProtectedRoute from "../../components/ProtectedRoute";
 import ProfileClient from "./ProfileClient";

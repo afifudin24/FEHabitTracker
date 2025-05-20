@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-html-link-for-pages */
 import ButtonHref from "./ButtonHref";
 import { useUser } from "../context/UserContext";
 const Navbar = () => {
+  const { user } = useUser();
+  console.log(user);
   return (
     <div className="w-[90%] my-4 mx-auto md:w-[70%]">
       {/* buat div */}

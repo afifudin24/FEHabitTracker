@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useEffect, useState } from "react";
 import DarkModeToggle from "@/components/DarkModeToggle";
@@ -5,8 +7,7 @@ import NavbarDashboard from "@/components/NavbarDashboard";
 import {
   faEye,
   faAdd,
-  faTimes,
-  faCheck,
+
   faTrash,
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
@@ -360,7 +361,7 @@ const Habits = () => {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 pb-5">
                   {habits.length > 0 ? (
-                    habits.map((habit, index) => (
+                    habits.map((habit) => (
                       <div
                         key={habit.id}
                         className="bg-bg-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow"

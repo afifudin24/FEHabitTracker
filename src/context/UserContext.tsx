@@ -1,4 +1,5 @@
 // context/UserContext.tsx
+"use client";
 import { User, UserContextType } from "@/app/intefaces/User";
 import { getMe } from "@/services/userServices";
 import { createContext, useContext, useState, useEffect } from "react";
@@ -31,5 +32,10 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     </UserContext.Provider>
   );
 };
-
-export const useUser = () => useContext(UserContext);
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
+};

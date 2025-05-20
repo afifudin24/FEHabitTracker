@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import NavbarDashboard from "@/components/NavbarDashboard";
 import Section1 from "@/elements/dashboard/Section1";
 import DarkModeToggle from "@/components/DarkModeToggle";

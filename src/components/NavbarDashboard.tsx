@@ -4,7 +4,7 @@ import Container from "./Container";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import imgprofile from "../assets/afif.jpg";
+import imgprofile from "../assets/profile.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -13,8 +13,11 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { storageUrl } from "@/services/url";
 
 const NavbarDashboard = () => {
+  const { user } = useUser();
+  console.log(user);
   const pathname = usePathname();
   const [isSticky, setIsSticky] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -45,9 +48,8 @@ const NavbarDashboard = () => {
     <div className={`w-full  transition-all duration-300`}>
       {/* Desktop Navigation */}
       <nav
-        className={`hidden md:block w-full top-0 z-50 py-4 ${
-          isSticky ? "fixed bg-bg-card shadow-md" : "shadow-sm relative"
-        }`}
+        className={`hidden md:block w-full top-0 z-50 py-4 ${isSticky ? "fixed bg-bg-card shadow-md" : "shadow-sm relative"
+          }`}
       >
         <Container className="flex justify-between items-center ">
           <div className="text-3xl hover:text-primary-hover transition-all ease-in-out duration-300 font-bold text-primary">
@@ -60,11 +62,10 @@ const NavbarDashboard = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`link hover:text-primary-hover ${
-                      pathname === link.href
-                        ? "active text-primary"
-                        : "text-text-primary"
-                    }`}
+                    className={`link hover:text-primary-hover ${pathname === link.href
+                      ? "active text-primary"
+                      : "text-text-primary"
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -74,7 +75,11 @@ const NavbarDashboard = () => {
 
             <div className="relative group">
               <Image
-                src={imgprofile}
+                src={
+                  user?.profile === "default"
+                    ? imgprofile
+                    : `${storageUrl}/${user?.profile}`
+                }
                 alt=""
                 className="w-10 h-10 rounded-full border object-cover cursor-pointer"
               />
@@ -101,9 +106,8 @@ const NavbarDashboard = () => {
 
       {/* Mobile Navigation */}
       <nav
-        className={`md:hidden block py-4 w-full top-0 z-50  ${
-          isSticky ? "fixed bg-bg-card shadow-md" : "shadow-sm fixed"
-        }`}
+        className={`md:hidden block py-4 w-full top-0 z-50  ${isSticky ? "fixed bg-bg-card shadow-md" : "shadow-sm fixed"
+          }`}
       >
         <Container className="flex items-center justify-between">
           <div className="text-2xl font-bold text-primary hover:text-primary-hover">
@@ -111,9 +115,8 @@ const NavbarDashboard = () => {
           </div>
           <div
             onClick={toggleSidebar}
-            className={`text-2xl  text-text-light   w-[50px] h-[50px] hover:bg-primary-hover flex items-center justify-center rounded-md  cursor-pointer ${
-              showSidebar ? "bg-primary-hover" : "bg-primary"
-            }`}
+            className={`text-2xl  text-text-light   w-[50px] h-[50px] hover:bg-primary-hover flex items-center justify-center rounded-md  cursor-pointer ${showSidebar ? "bg-primary-hover" : "bg-primary"
+              }`}
           >
             {/* <i className="fa fa-bars"></i> */}
 
@@ -128,9 +131,8 @@ const NavbarDashboard = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full bg-bg-card z-50 transition-all duration-500 ease-in-out overflow-x-hidden ${
-          showSidebar ? "w-[60%]" : "w-0"
-        }`}
+        className={`fixed top-0 left-0 h-full bg-bg-card z-50 transition-all duration-500 ease-in-out overflow-x-hidden ${showSidebar ? "w-[60%]" : "w-0"
+          }`}
       >
         <div className="h-full py-12 px-4 flex flex-col justify-between items-center">
           {/* Menu */}
@@ -140,11 +142,10 @@ const NavbarDashboard = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`link hover:text-primary-hover ${
-                      pathname === link.href
-                        ? "active text-primary"
-                        : "text-text-primary"
-                    }`}
+                    className={`link hover:text-primary-hover ${pathname === link.href
+                      ? "active text-primary"
+                      : "text-text-primary"
+                      }`}
                   >
                     {link.label}
                   </Link>
