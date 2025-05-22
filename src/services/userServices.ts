@@ -9,7 +9,7 @@ export const getUserById = (id:string) => api.get(`/users/${id}`);
 export const createUser = (data:FormData) => api.post('/users', data);
 
 // PUT
-export const updateUser = (id:string, data:FormData) => api.put(`/users/${id}`, data);
+export const updateUser = (data:FormData) => api.put(`/users/updateprofile`, data);
 
 // DELETE
 export const deleteUser = (id:string) => api.delete(`/users/${id}`);

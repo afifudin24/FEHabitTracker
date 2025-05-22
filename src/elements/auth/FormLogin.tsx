@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import FormInput from "@/components/FormInput";
 import { login } from "@/services/authServices";
+import { useUser } from "@/context/UserContext";
+
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { showToast } from "@/components/Toastify";
 const FormLogin = () => {
-  const [user, setUser] = useState({
+  const [datauser, setDataUser] = useState({
     email: "",
     password: "",
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUser((prev) => ({
+    setDataUser((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -19,10 +21,11 @@ const FormLogin = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await login(user);
-      console.log(response);
+      const response = await login(datauser);
+
       showToast(response.data.message, response.data.status);
       if (response.status == 200) {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         Cookies.set("token", response.data.token, { expires: 1 });
         window.location.href = "/dashboard";
       }
@@ -57,7 +60,7 @@ const FormLogin = () => {
           onChange={handleChange}
           name="email"
           required={true}
-          value={user.email}
+          value={datauser.email}
           type="text"
           placeholder="Email"
         />
@@ -66,7 +69,7 @@ const FormLogin = () => {
           onChange={handleChange}
           type="password"
           required={true}
-          value={user.password}
+          value={datauser.password}
           placeholder="Password"
         />
 

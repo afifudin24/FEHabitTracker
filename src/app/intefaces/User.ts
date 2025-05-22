@@ -4,8 +4,13 @@ export interface User {
     password : string;
      profile?: string | null;
 }
+export interface UserData {
+    name : string;
+    email : string;
+    profile?: string | null;
+}
 
 export interface UserContextType {
-  user: User | null;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  user: UserData | null;
+  setUser: React.Dispatch<React.SetStateAction<UserData | null>>;
 }

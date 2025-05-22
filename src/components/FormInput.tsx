@@ -5,7 +5,6 @@ export interface FormInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   required: boolean;
 }
-
 const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
