@@ -1,37 +1,60 @@
-import { useState } from "react";
-const HabitList = () => {
-    const [habits, setHabits] = useState([
-        { id: "habit1", text: "Drink 8 glasses of water", checked: false },
-        { id: "habit2", text: "Exercise for at least 30 minutes", checked: false },
-        { id: "habit3", text: "Read 10 pages of a book", checked: false },
-        { id: "habit4", text: "Go to bed before 11 PM", checked: false }
-      ]);
-    
-      const handleCheck = (id: string) => {
-        setHabits((prev) =>
-          prev.map((habit) =>
-            habit.id === id ? { ...habit, checked: !habit.checked } : habit
-          )
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { getHabitIncomplete } from "@/services/habitServices";
+import { useEffect, useState } from "react";
+const HabitList = ({ habits, setHabits, addLog }: any) => {
+
+  const getToday = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate
+  }
+
+  const handleCheck = (id: string) => {
+    setHabits((prev: any) =>
+      prev.map((habit: any) => {
+        if (habit.id !== id) return habit;
+
+        const today = getToday();
+        const updatedLogs = habit.logs.map((log: any) =>
+          log.date === today
+            ? { ...log, value: log.value === 1 ? 0 : 1 }
+            : log
         );
-      };
-    return (
-        <ul className="list-none habit-list">
-        {habits.map((habit) => (
+
+        return { ...habit, logs: updatedLogs };
+      })
+    );
+
+    addLog(id); // opsional: kirim ke backend
+  };
+
+
+
+  return (
+    <ul className="list-none habit-list">
+      {habits.map((habit: any) => {
+        const todayLog = habit.logs?.find((log: any) => log.date === getToday());
+        console.log(todayLog);
+        return (
           <li key={habit.id} className="flex items-center gap-2.5 mb-2.5">
             <input
               type="checkbox"
               id={habit.id}
 
-              checked={habit.checked}
+              checked={todayLog?.value == 1}
               onChange={() => handleCheck(habit.id)}
             />
-            <label htmlFor={habit.id} className={`custom-checkbox ${habit.checked ? 'line-through' : ''}`}>
-              {habit.text}
+            <label htmlFor={habit.id} className={`custom-checkbox ${todayLog?.value == 1 ? 'line-through' : ''}`}>
+              {habit.title}
             </label>
           </li>
-        ))}
-      </ul>
-    );
+        )
+      })}
+    </ul>
+  );
 }
 
 export default HabitList;

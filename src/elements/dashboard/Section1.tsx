@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Container from "@/components/Container";
 import { P1 } from "@/components/Paragraph";
 import { H2, H3 } from "@/components/Heading";
@@ -5,7 +6,7 @@ import { faArrowRight, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HabitList from "./HabitList";
 import Card from "@/components/Card";
-const Section1 = () => {
+const Section1 = ({ habits, setHabits, addLog }: any) => {
     return (
         <Container className="md:mt-8 mt-20">
             <div className="flex gap-1  items-center justify-between flex-col md:flex-row">
@@ -31,7 +32,7 @@ const Section1 = () => {
                         <H3>
                             Today Habits
                         </H3>
-                        <HabitList />
+                        <HabitList habits={habits} setHabits={setHabits} addLog={addLog} />
                     </Card>
                 </div>
             </div>
