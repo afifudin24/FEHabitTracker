@@ -6,17 +6,41 @@ import { faArrowRight, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HabitList from "./HabitList";
 import Card from "@/components/Card";
+import { useEffect, useState } from "react";
+import { getDayName } from "@/functions/date";
+import { getFormattedToday } from "@/functions/date";
 const Section1 = ({ habits, setHabits, addLog }: any) => {
+    const [user, setUser] = useState<any>(null);
+    useEffect(() => {
+        const updateUserFromLocalStorage = () => {
+            const userData = localStorage.getItem("user");
+            console.log(userData);
+            if (userData) {
+                setUser(JSON.parse(userData)); // ← set user state di komponen ini
+            } else {
+                window.location.href = "/login";
+            }
+        };
+
+        updateUserFromLocalStorage(); // ← Dipanggil pertama kali saat komponen mount
+
+        window.addEventListener("userUpdated", updateUserFromLocalStorage);
+
+        console.log(user);
+        return () => {
+            window.removeEventListener("userUpdated", updateUserFromLocalStorage);
+        };
+    }, []);
     return (
         <Container className="md:mt-8 mt-20">
             <div className="flex gap-1  items-center justify-between flex-col md:flex-row">
                 <div data-aos="fade-right" data-aos-duration="1000" className="left w-full md:w-6/12">
                     <P1 className="my-5 text-center md:text-start">
                         <FontAwesomeIcon className="mr-2" icon={faCalendar} />
-                        Thursday, May 9, 2025
+                        {getDayName()}, {getFormattedToday()}
                     </P1>
                     <H2 className="my-5 text-center md:text-left">
-                        Good Morning, Afif
+                        Good Morning, {user?.name}
                     </H2>
                     <P1 className="my-5 text-center md:text-left">
                         Today is another chance to grow.

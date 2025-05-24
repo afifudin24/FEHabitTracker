@@ -86,6 +86,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         getHabitsList();
+        console.log(habits);
     },
         []
     );
